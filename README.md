@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## users テーブル
 
-* Ruby version
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| lang_1 | string |  |
+| lang_2 | string |  |
+| lang_3 | string |  |
+| sgtm | int |  |
+| email    | string | null: false |
+| password | string | null: false |
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :room_users
+- has_many :rooms, through: room_users
+- has_many :messages
 
-* Database creation
+## rooms テーブル
 
-* Database initialization
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name  | string | null: false |
 
-* How to run the test suite
+### Association
+- has_many :room_users
+- has_many :users, through: room_users
+- has_many :messages
 
-* Services (job queues, cache servers, search engines, etc.)
+## room_users テーブル
 
-* Deployment instructions
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| room_id | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :room
+- belongs_to :user
+
+## messages テーブル
+
+| Column  | Type    | Options                        |
+| ------- |  ------- | ------------------------------ |
+| content    | string  |
+| voice | string |
+| user_id | references | null: false, foreign_key: true |
+| room_id | references | null: false, foreign_key: true |
+
+### Association
+belongs_to :room
+belongs_to :user
