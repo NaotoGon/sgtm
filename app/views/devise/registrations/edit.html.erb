@@ -1,7 +1,27 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_with model: current_user, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class='field'>
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname, autofocus: true%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :第1言語%><br />
+    <%= f.text_field :lang_1%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :第2言語%><br />
+    <%= f.text_field :lang_2%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :第3言語%><br />
+    <%= f.text_field :lang_3%>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
