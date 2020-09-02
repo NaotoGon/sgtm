@@ -10,7 +10,6 @@
 | lang_1 | string |  |
 | lang_2 | string |  |
 | lang_3 | string |  |
-| sgtm | int |  |
 | email    | string | null: false |
 | password | string | null: false |
 
@@ -49,6 +48,7 @@
 | ------- |  ------- | ------------------------------ |
 | content    | string  |
 | voice | string |
+| sgtm | int |  |
 | user_id | references | null: false, foreign_key: true |
 | room_id | references | null: false, foreign_key: true |
 
