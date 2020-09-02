@@ -3,11 +3,11 @@
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <%= link_to "マイページへ", edit_user_registration_path(current_user.id) %>
   <h2>ルーム一覧</h2>
-  <% @rooms.each do |room| %>
-    <div class="room">
-      <%= link_to room.name, room_messages_path(room) %>
-    </div>
-  <% end %>
+  <%# <% @rooms.each do |room| %>
+    <%# <div class="room"> %>
+      <%# <%= link_to room.name, room_messages_path(room) %> %>
+    <%# </div> %>
+  <%# <% end %> %> %>
 <% else %>
   <%= link_to "ユーザー登録", new_user_registration_path %>
   <%= link_to "ログイン", new_user_session_path %>
