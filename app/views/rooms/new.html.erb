@@ -1,0 +1,17 @@
+<div class="room-form">
+  <h1>ルーム作成</h1>
+  <%= form_with model: @room, local: true do |f| %>
+    <div class='chat-room-form__field--left'>
+      <%= f.label :チャットルーム名, class: 'chat-room-form__label'%>
+    </div>
+    <div class="room-name">
+      <%= f.text_field :name, class:"name", placeholder:"ルームの名前" %>
+    </div>
+    <div class="genre">
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+    </div>
+    <div class="submit">
+      <%= f.submit "ルームを作る" ,class:"btn" %>
+    </div>
+  <% end %>
+</div>
