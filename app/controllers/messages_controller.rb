@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def index
     @room = Room.find(params[:room_id])
     @message = Message.new
-    @messages = Message.order("created_at DESC")
+    @messages = Message.where(room_id: @room.id)
   end
 
   def create
