@@ -19,7 +19,8 @@
         <%= message.content %>
       </div>
       <div class="voice">
-        <%= audio_tag message.voice.to_s %>
+        <audio src=a controls></audio>
+        <%# <%= audio_tag message.voice %> %>
       </div>
     <% end %>
   <% end %>
@@ -36,3 +37,10 @@
   <%= f.submit '送信', class: 'form-submit' %>
 <% end %>
 
+<%=javascript_tag do%>
+        document.querySelector('.audioButton').onclick = function () {
+        document.querySelector("#audio").play();
+        alert("You answered")
+        Materialize.toast("You Answered", 4000,'rounded')
+        }
+<%end%>
