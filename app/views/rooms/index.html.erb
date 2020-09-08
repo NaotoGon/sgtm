@@ -1,7 +1,9 @@
-<h1>SGTM</h1>
-<h3>こんにちは! <%= current_user.nickname %>さん</h3>
+<span class="header">
+  <h1>SGTM - Sounds Good To Me -</h1>
+</span>
 
 <% if user_signed_in? %>
+  <h3>こんにちは! <%= current_user.nickname %>さん</h3>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <%= link_to "編集", edit_user_registration_path(current_user.id) %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
@@ -15,4 +17,9 @@
 <% else %>
   <%= link_to "ユーザー登録", new_user_registration_path %>
   <%= link_to "ログイン", new_user_session_path %>
+  <% @rooms.each do |room| %>
+    <div class="room"> 
+      <%= link_to room.name, room_messages_path(room.id) %>
+    </div>
+  <% end %>
 <% end %>
