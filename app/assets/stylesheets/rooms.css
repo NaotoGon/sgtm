@@ -1,0 +1,60 @@
+.header{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  background-color: beige;
+  padding: 10px;
+}
+
+.wrapper{
+  display: flex;
+}
+
+.side-bar{
+  width: 20%;
+  height: 100vh;
+  background-color: darksalmon;
+}
+
+.main{
+  width: 100vw;
+  margin: 15px;
+  font-size: 20px;
+}
+
+.room{
+  margin: 3px;
+}
+
+.message-wrapper{
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.room-name{
+  font-size: 30px;
+}
+
+.main-block{
+  background-color: beige;
+  height: 80vh;
+  margin: 15px;
+  overflow: scroll;
+}
+
+.message{
+  border: black solid 1px;
+  margin: 5px;
+}
+
+.content{
+  font-size: 20px;
+}
+
+.submit{
+  margin: 15px;
+  position: absolute;
+  background-color: beige;
+  bottom: 0;
+}

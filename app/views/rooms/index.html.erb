@@ -1,18 +1,52 @@
-<h1>SGTM</h1>
-<h3>こんにちは! <%= current_user.nickname %>さん</h3>
-
+<div class="header">
+  <h1>SGTM - Sounds Good To Me -</h1>
+</div>
 <% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
-  <%= link_to "編集", edit_user_registration_path(current_user.id) %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-  <%= link_to "ルームを作る", new_room_path %>
-  <h2>ルーム一覧</h2>
-  <% @rooms.each do |room| %>
-    <div class="room"> 
-      <%= link_to room.name, room_messages_path(room.id) %>
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="greeting">
+        <h3><%= current_user.nickname %>さん</h3>
+      </div>
+      <div class="settings">
+        <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+        <br>
+        <%= link_to "登録情報編集", edit_user_registration_path(current_user.id) %>
+      </div>
+      <div class="create-room">
+        <%= link_to "ルームを作る", new_room_path %>
+      </div>
     </div>
-  <% end %>
+    <div class="main">
+      <div class="rooms">
+        <div class="summary">
+          <h2>ルーム一覧</h2>
+        </div>
+        <% @rooms.each do |room| %>
+          <div class="room"> 
+            <u><%= link_to room.name, room_messages_path(room.id) %></u>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% else %>
-  <%= link_to "ユーザー登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="settings">
+        <%= link_to "ユーザー登録", new_user_registration_path %>
+        <br>
+        <%= link_to "ログイン", new_user_session_path %>
+      </div>
+    </div>
+    <div class="main">
+      <div class="summary">
+        <h2>ルーム一覧</h2>
+      </div>
+      <% @rooms.each do |room| %>
+        <div class="room"> 
+          <%= link_to room.name, room_messages_path(room.id) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
