@@ -6,9 +6,11 @@
     <div class="room-name">
       <%= @room.name%>
     </div>
-    <div class="header-button">
-      <%= link_to "チャットを終了する", room_path(@room), method: :delete %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="header-button">
+        <%= link_to "チャットを終了する", room_path(@room), method: :delete %>
+      </div>
+    <% end %>
     <div class="messages">
       <% if @messages.present? %>
         <% @messages.each do |message| %>
@@ -28,18 +30,20 @@
       <% end %>
     </div>
   </div>
-  <div class="submit">
-    <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
-      <div class="form-input">
-        <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
-        <label class="form-voice">
-          <span class="voice-file">音声</span>
-          <%= f.file_field :voice, class: 'hidden' %>
-        </label>
-      </div>
-      <%= f.submit '送信', class: 'form-submit' %>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="submit">
+      <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
+        <div class="form-input">
+          <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+          <label class="form-voice">
+            <span class="voice-file">音声</span>
+            <%= f.file_field :voice, class: 'hidden' %>
+          </label>
+        </div>
+        <%= f.submit '送信', class: 'form-submit' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <%=javascript_tag do%>

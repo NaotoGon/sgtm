@@ -30,13 +30,23 @@
     </div>
   </div>
 <% else %>
-  <div class="session">
-    <%= link_to "ユーザー登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-  </div>
-  <% @rooms.each do |room| %>
-    <div class="room"> 
-      <%= link_to room.name, room_messages_path(room.id) %>
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="settings">
+        <%= link_to "ユーザー登録", new_user_registration_path %>
+        <br>
+        <%= link_to "ログイン", new_user_session_path %>
+      </div>
     </div>
-  <% end %>
+    <div class="main">
+      <div class="summary">
+        <h2>ルーム一覧</h2>
+      </div>
+      <% @rooms.each do |room| %>
+        <div class="room"> 
+          <%= link_to room.name, room_messages_path(room.id) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
