@@ -3,11 +3,11 @@ class MessagesController < ApplicationController
   def index
     @room = Room.find(params[:room_id])
     @message = Message.new
-    @messages = Message.all.order(created_at: "DESC")
+    @messages = Message.all.order(created_at: "ASC")
   end
 
   def create
-    @messages = Message.all.order(created_at: "DESC")
+    @messages = Message.all.order(created_at: "ASC")
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     if @message.save
